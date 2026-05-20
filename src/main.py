@@ -23,8 +23,11 @@ def main():
 
 
     draw_line(app.canvas.backbuffer, max_w,max_h, 0, max_h//2, (0,0,0,255))
-    draw_line(app.canvas.backbuffer, 0,max_h, max_w, max_h//2, (0,0,0,255))
+    draw_line(app.canvas.backbuffer, 0,max_h, max_w,max_h//2, (0,0,0,255))
     app.canvas.upload_backbuffer()
 
+    draw_line(app.canvas.backbuffer, 50,50, 150,150, (0,0,0,255))
+    app.canvas.upload_backbuffer()
+    
     app.run()
 main()
