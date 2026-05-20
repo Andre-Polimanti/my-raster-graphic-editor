@@ -8,7 +8,7 @@ BackBuffer -> clear()
 
 # Como rodar
 Crie um ambiente virtual e instale as dependências listadas no arquivo requirements.txt, atravez do pip.  
-A partir da pasta de maior hierarquia, rode "pyhton src/main.py"
+A partir da pasta de maior hierarquia, rode "python src/main.py"
 
 
 # Observação
