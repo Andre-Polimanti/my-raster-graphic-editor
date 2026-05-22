@@ -1,4 +1,4 @@
-class Buffer:
+class FrontBuffer:
     def __init__(self, width:int, height:int, background_color:tuple = (255,255,255,255)):
         self.w = width
         self.h = height

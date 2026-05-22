@@ -1,7 +1,7 @@
-from .FrontBuffer import Buffer
+from .FrontBuffer import FrontBuffer
 
-class BackBuffer(Buffer):
-    def __init__(self, front_buffer:Buffer):    
+class BackBuffer(FrontBuffer):
+    def __init__(self, front_buffer:FrontBuffer):    
         super().__init__(front_buffer.w,front_buffer.h, (0,0,0,0))
 
         self.front_buffer = front_buffer

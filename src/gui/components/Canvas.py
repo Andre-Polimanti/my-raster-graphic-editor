@@ -1,6 +1,6 @@
 from OpenGL.GL import *
 
-from core.FrontBuffer import Buffer
+from core.FrontBuffer import FrontBuffer
 from core.BackBuffer import BackBuffer
 
 class Canvas:
@@ -8,7 +8,7 @@ class Canvas:
         self.w = width
         self.h = height
 
-        self.frontbuffer = Buffer(width,height, (255,255,255,255))
+        self.frontbuffer = FrontBuffer(width,height, (255,255,255,255))
         self.backbuffer = BackBuffer(self.frontbuffer)
 
     def render(self, w:int,h:int):
