@@ -33,3 +33,4 @@ class Buffer:
     def clear(self):
         r, g, b, a= self.bg_color
         self.pixels[:] = bytearray([r, g, b, a] * (self.w * self.h))
+        print("FrontBuffer cleared!")
