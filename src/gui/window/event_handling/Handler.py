@@ -16,8 +16,13 @@ class EventHandler:
         self.keyboard_events = KeyboardEvents(self)
 
         self.is_drawing = False
+        self.current_tool = None
     
     def cancel_canvas_edit(self):
         if self.mouse_events.is_drawing:
             self.mouse_events.stop_drawing()
             self.canvas.current_edit_clear()
+
+    def set_tool(self, tool:str):
+        self.current_tool = tool
+        self.mouse_events.current_tool = tool

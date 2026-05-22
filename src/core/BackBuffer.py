@@ -18,7 +18,7 @@ class BackBuffer(FrontBuffer):
         for x, y in self.dirty_pixels:
             super().put_pixel(x, y, self.bg_color)
         self.dirty_pixels.clear()
-        print("BackBuffer cleared!")
+        #print("BackBuffer cleared!")
     
     def commit(self):
         for x,y in self.get_dirty_pixels():

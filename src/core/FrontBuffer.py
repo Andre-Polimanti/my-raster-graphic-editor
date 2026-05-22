@@ -27,10 +27,10 @@ class FrontBuffer:
         if is_valid_operation:
             idx = (y * self.w + x) * 4
             return (self.pixels[idx], self.pixels[idx+1], self.pixels[idx+2], self.pixels[idx+3])
-        print("Invalid pixel!")
+        #print("Invalid pixel!")
         return self.bg_color
     
     def clear(self):
         r, g, b, a= self.bg_color
         self.pixels[:] = bytearray([r, g, b, a] * (self.w * self.h))
-        print("FrontBuffer cleared!")
+        #print("FrontBuffer cleared!")

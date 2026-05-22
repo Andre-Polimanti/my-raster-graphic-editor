@@ -52,4 +52,4 @@ class MainWindow:
 
             glfw.swap_buffers(self.window)
         glfw.terminate()
-        print("Main Window closed.\n")
+        #print("Main Window closed.\n")
