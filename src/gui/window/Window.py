@@ -33,7 +33,7 @@ class MainWindow:
         glfw.set_key_callback(self.window, self.event_handler.keyboard_events.key_callback)
         
         # Window settings
-        glfw.set_window_size_limits(self.window, self.w,self.h, 1980,1080)
+        glfw.set_window_size_limits(self.window, self.w,self.h, self.w,self.h)
 
         # Commiting all settings
         glfw.make_context_current(self.window)
