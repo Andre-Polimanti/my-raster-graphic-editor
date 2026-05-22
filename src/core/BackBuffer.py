@@ -1,4 +1,4 @@
-from .Buffer import Buffer
+from .FrontBuffer import Buffer
 
 class BackBuffer(Buffer):
     def __init__(self, front_buffer:Buffer):    

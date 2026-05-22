@@ -1,6 +1,6 @@
 from OpenGL.GL import *
 
-from core.Buffer import Buffer
+from core.FrontBuffer import Buffer
 from core.BackBuffer import BackBuffer
 
 class Canvas:
