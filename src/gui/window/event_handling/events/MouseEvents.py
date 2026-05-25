@@ -1,14 +1,17 @@
 import glfw
 
 from gui.components.Canvas import Canvas
+
 from lib.primitives.lines.bresenham import draw_line
 from lib.primitives.pixel.pencil import draw_pixel
 
+tool_size = 3
+
 class MouseEvents:
-    def __init__(self, orchestrator):
-        self.orchestrator = orchestrator
-        self.window = orchestrator.window
-        self.canvas: Canvas = orchestrator.canvas
+    def __init__(self, handler):
+        self.handler = handler
+        self.window = handler.window
+        self.canvas: Canvas = handler.canvas
 
         self.x0 = 0
         self.y0 = 0
@@ -30,13 +33,11 @@ class MouseEvents:
 
         return y
 
-    def cursor_pos_callback(self, window, xpos, ypos):
-        if not self.is_drawing:
-            return
-        
+    def pos_callback(self, window, xpos, ypos):
+        if not self.is_drawing: return
+
         match self.current_tool:
-            case None:
-                return
+            case None: return
             
             case "Line":
                 current_x = int(xpos)
@@ -50,13 +51,12 @@ class MouseEvents:
                 current_x = int(xpos)
                 current_y = self.normalize_vertical_axis(ypos)
 
-                draw_pixel(self.canvas.backbuffer, current_x,current_y, (0,0,0,255), 3)
+                draw_pixel(self.canvas.backbuffer, current_x,current_y, (0,0,0,255), tool_size)
 
 
     def button_callback(self, window, button, action, mods):
         match self.current_tool:
-            case None:
-                return
+            case None: return
             
             case "Line":
                 if button == glfw.MOUSE_BUTTON_LEFT and action == glfw.PRESS:
@@ -82,6 +82,7 @@ class MouseEvents:
                         self.canvas.upload_backbuffer()
 
                         self.is_drawing = False
+
             case "Pencil":
                 if button == glfw.MOUSE_BUTTON_LEFT and action == glfw.PRESS:
                     self.is_drawing = True
@@ -90,8 +91,9 @@ class MouseEvents:
                     x, y = glfw.get_cursor_pos(window)
                     self.x0, self.y0 = int(x), int(y)
                     self.y0 = self.normalize_vertical_axis(self.y0)
-                    draw_pixel(self.canvas.backbuffer, self.x0,self.y0, (0,0,0,255), 3)
+                    draw_pixel(self.canvas.backbuffer, self.x0,self.y0, (0,0,0,255), tool_size)
+
                 if action == glfw.RELEASE:
                     if self.is_drawing:  
-                        self.canvas.upload_backbuffer()
+                        self.canvas.upload_backbuffer() # If the user releases the mouse button without aborting the edit, it must be commited
                         self.is_drawing = False

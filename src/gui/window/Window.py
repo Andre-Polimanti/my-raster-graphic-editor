@@ -2,7 +2,7 @@ import glfw
 from OpenGL.GL import *
 from gui.components.Canvas import Canvas
 
-from gui.window.event_handling.Handler import EventHandler
+from gui.window.event_handling.EventHandler import EventHandler
 
 class MainWindow:
     def __init__(self, width:int,height:int):
@@ -26,11 +26,11 @@ class MainWindow:
         self.event_handler = EventHandler(self.window, self.canvas)
 
         # Mouse events
-        glfw.set_cursor_pos_callback(self.window, self.event_handler.mouse_events.cursor_pos_callback)
-        glfw.set_mouse_button_callback(self.window, self.event_handler.mouse_events.button_callback)
+        glfw.set_cursor_pos_callback(self.window, self.event_handler.mouse.pos_callback)
+        glfw.set_mouse_button_callback(self.window, self.event_handler.mouse.button_callback)
 
         #Keyboard events
-        glfw.set_key_callback(self.window, self.event_handler.keyboard_events.key_callback)
+        glfw.set_key_callback(self.window, self.event_handler.keyboard.key_callback)
         
         # Window settings
         glfw.set_window_size_limits(self.window, self.w,self.h, self.w,self.h)
