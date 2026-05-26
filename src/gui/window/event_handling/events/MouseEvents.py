@@ -2,11 +2,6 @@ import glfw
 
 from gui.components.Canvas import Canvas
 
-from lib.primitives.lines.bresenham import draw_line
-from lib.primitives.pixel.pencil import draw_pixel
-
-tool_size = 3
-
 class MouseEvents:
     def __init__(self, handler):
         self.handler = handler
@@ -15,85 +10,45 @@ class MouseEvents:
 
         self.x0 = 0
         self.y0 = 0
-        self.x1 = 0
-        self.y1 = 0
 
-        self.current_tool = None
         self.is_drawing = False
     
     def stop_drawing(self):
-        if self.is_drawing:
-            self.is_drawing = False
+        self.is_drawing = False
 
     def normalize_vertical_axis(self, ypos): #It's inverted by default
         h = (glfw.get_window_size(self.window)[1])
+        return h - int(ypos) - 1
+    
+    def button_callback(self, window, button, action, mods):
+        tool = self.handler.current_tool
 
-        y = int(ypos)
-        y = h - y - 1
+        if not tool or button != glfw.MOUSE_BUTTON_LEFT:
+            return
+        
+        x,y =  glfw.get_cursor_pos(window)
 
-        return y
+        x = int(x)
+        y = self.normalize_vertical_axis(int(y))
+
+        if action == glfw.PRESS:
+            self.is_drawing = True
+
+            self.x0 = x
+            self.y0 = y
+            tool.on_press(self.canvas, self.x0,self.y0, (0,0,0,255))
+
+        if action == glfw.RELEASE:
+            if self.is_drawing:
+                tool.on_release(self.canvas)
+                self.is_drawing = False
 
     def pos_callback(self, window, xpos, ypos):
-        if not self.is_drawing: return
+        tool = self.handler.current_tool
 
-        match self.current_tool:
-            case None: return
-            
-            case "Line":
-                current_x = int(xpos)
-                current_y = self.normalize_vertical_axis(ypos)
-
-                self.canvas.current_edit_clear() # Only the starter and ending points will be used for crafting a line, all others can be descarded
-
-                draw_line(self.canvas.backbuffer, self.x0, self.y0, current_x, current_y, (0, 0, 0, 255))
-
-            case "Pencil":
-                current_x = int(xpos)
-                current_y = self.normalize_vertical_axis(ypos)
-
-                draw_pixel(self.canvas.backbuffer, current_x,current_y, (0,0,0,255), tool_size)
-
-
-    def button_callback(self, window, button, action, mods):
-        match self.current_tool:
-            case None: return
-            
-            case "Line":
-                if button == glfw.MOUSE_BUTTON_LEFT and action == glfw.PRESS:
-                    self.is_drawing = True
-                    #print(f"Tool: {self.current_tool}")
-
-                    x, y = glfw.get_cursor_pos(window)
-                    self.x0, self.y0 = int(x), int(y)
-                    self.y0 = self.normalize_vertical_axis(self.y0)
-
-                    #print(f"X0={self.x0}, Y0={self.y0}")
+        if not self.is_drawing: return            
         
-                if action == glfw.RELEASE:
-                    if self.is_drawing:            
-                        x, y = glfw.get_cursor_pos(window)
-                        self.x1, self.y1 = int(x), int(y)
-                        self.y1 = self.normalize_vertical_axis(self.y1)
+        x = int(xpos)
+        y = self.normalize_vertical_axis(int(ypos)) # We only update the current cursor position, since the first one was normalized on the moment the button was pressed
 
-                        #print(f"X1={self.x1}, Y1={self.y1}")
-
-                        draw_line(self.canvas.backbuffer, self.x0,self.y0, self.x1,self.y1, (0, 0, 0, 255))
-        
-                        self.canvas.upload_backbuffer()
-
-                        self.is_drawing = False
-
-            case "Pencil":
-                if button == glfw.MOUSE_BUTTON_LEFT and action == glfw.PRESS:
-                    self.is_drawing = True
-                    #print(f"Tool: {self.current_tool}")
-
-                    x, y = glfw.get_cursor_pos(window)
-                    self.x0, self.y0 = int(x), int(y)
-                    self.y0 = self.normalize_vertical_axis(self.y0)
-                    draw_pixel(self.canvas.backbuffer, self.x0,self.y0, (0,0,0,255), tool_size)
-
-                if action == glfw.RELEASE:
-                    if self.is_drawing:  
-                        self.canvas.upload_backbuffer() # If the user releases the mouse button without aborting the edit, it must be commited
-                        self.is_drawing = False
+        tool.on_drag(self.canvas, self.x0,self.y0, x,y, (0,0,0,255))

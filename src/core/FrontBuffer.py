@@ -19,7 +19,7 @@ class FrontBuffer:
             self.pixels[idx + 2] = color[2] # B
             self.pixels[idx + 3] = color[3] # Alpha
             return True
-        print(f"Pixel of coordinates ({x},{y}) is invalid!")
+        #print(f"Pixel of coordinates ({x},{y}) is invalid!")
         return False
 
     def get_pixel(self, x:int,y:int):
