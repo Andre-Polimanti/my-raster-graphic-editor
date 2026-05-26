@@ -7,12 +7,14 @@ from gui.window.event_handling.events.KeyboardEvents import KeyboardEvents
 from gui.window.event_handling.events.MouseEvents import MouseEvents
 
 class EventHandler:
-    def __init__(self, window, canvas:Canvas):
-        self.window = window
+    def __init__(self, renderer):
+        self.renderer = renderer
 
-        self.canvas = canvas
+        self.window = self.renderer.window
+        self.canvas = self.renderer.canvas
+        self.color_palette = self.renderer.color_palette
+
         self.is_drawing = False
-
         self.current_tool:Tools = None        
 
         self.mouse = MouseEvents(self)

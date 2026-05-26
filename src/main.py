@@ -6,7 +6,7 @@ from lib.primitives.lines.bresenham import draw_line
 def main():
     w = 800
     h = 600
-    app = MainWindow(w,h)
+    app = MainWindow()
 
     # max_w = w - 1
     # max_h = h - 1

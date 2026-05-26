@@ -5,7 +5,10 @@ from gui.components.Canvas import Canvas
 class MouseEvents:
     def __init__(self, handler):
         self.handler = handler
+
         self.window = handler.window
+
+        self.color_palette = handler.color_palette
         self.canvas: Canvas = handler.canvas
 
         self.x0 = 0
@@ -28,7 +31,7 @@ class MouseEvents:
         
         x,y =  glfw.get_cursor_pos(window)
 
-        x = int(x)
+        x = int(x - self.handler.renderer.palette_section)
         y = self.normalize_vertical_axis(int(y))
 
         if action == glfw.PRESS:
@@ -48,7 +51,7 @@ class MouseEvents:
 
         if not self.is_drawing: return            
         
-        x = int(xpos)
+        x = int(xpos - self.handler.renderer.palette_section)
         y = self.normalize_vertical_axis(int(ypos)) # We only update the current cursor position, since the first one was normalized on the moment the button was pressed
 
         tool.on_drag(self.x0,self.y0, x,y)
