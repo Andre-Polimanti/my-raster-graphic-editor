@@ -3,7 +3,7 @@ import glfw
 from typing import Callable
 
 from gui.components.Canvas import Canvas
-from gui.components.Tools import Pencil, Line
+from gui.components.Tools import Eraser, Pencil, Line
 
 type ToolCallback = Callable[[KeyboardEvents], None]
 
@@ -19,7 +19,7 @@ def register_tool(key: int) -> Callable[[int], Callable[[ToolCallback], ToolCall
 def close_window(events: KeyboardEvents) -> None:
     glfw.set_window_should_close(events.window, True)
 
-@register_tool(glfw.KEY_E)
+@register_tool(glfw.KEY_A)
 def abort_edit(events: KeyboardInterrupt) -> None:
     events.handler.cancel_canvas_edit()
 
@@ -30,11 +30,15 @@ def clear_canvas(events: KeyboardEvents) -> None:
 
 @register_tool(glfw.KEY_L)
 def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.current_tool = Line()
+    events.handler.current_tool = Line(events.canvas)
 
 @register_tool(glfw.KEY_P)
 def set_pencil_tool(events:KeyboardEvents) -> None:
-    events.handler.current_tool = Pencil()
+    events.handler.current_tool = Pencil(events.canvas)
+
+@register_tool(glfw.KEY_E)
+def set_eraser_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool = Eraser(events.canvas)
 
 
 @register_tool(glfw.KEY_0)

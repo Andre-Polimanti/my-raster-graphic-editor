@@ -36,11 +36,11 @@ class MouseEvents:
 
             self.x0 = x
             self.y0 = y
-            tool.on_press(self.canvas, self.x0,self.y0, (0,0,0,255))
+            tool.on_press(self.x0,self.y0)
 
         if action == glfw.RELEASE:
             if self.is_drawing:
-                tool.on_release(self.canvas)
+                tool.on_release()
                 self.is_drawing = False
 
     def pos_callback(self, window, xpos, ypos):
@@ -51,4 +51,4 @@ class MouseEvents:
         x = int(xpos)
         y = self.normalize_vertical_axis(int(ypos)) # We only update the current cursor position, since the first one was normalized on the moment the button was pressed
 
-        tool.on_drag(self.canvas, self.x0,self.y0, x,y, (0,0,0,255))
+        tool.on_drag(self.x0,self.y0, x,y)

@@ -13,11 +13,12 @@ A feature presented in this project is the Live Tool Preview, which enables the 
 ## Controls
 ### Keyboard
 #### General
-- E: Abort current edit
+- A: Abort current edit
 - Q: Reset the entire Canvas back to its background color
 - ESC: Close application
 #### Tool shortcuts
 - P: Select Pencil
+- E: Select Eraser
 - L: Select Line
 
 ##### Tool resizing
