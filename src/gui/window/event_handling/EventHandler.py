@@ -23,10 +23,17 @@ class EventHandler:
         self.mouse = MouseEvents(self)
         self.keyboard = KeyboardEvents(self)
     
+    def set_tool(self, tool:Tools):
+        self.current_tool = tool
+
+    def set_tool_size(self, size:int):
+        if self.current_tool:
+            self.current_tool.set_size(size)
+            
     def set_color(self, new_color:tuple):
         self.current_color = new_color
 
-    def cancel_canvas_edit(self):
+    def abort_edit(self):
         if self.mouse.is_drawing:
             self.mouse.stop_drawing()
             self.canvas.current_edit_clear()

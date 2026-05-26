@@ -22,6 +22,6 @@ A feature presented in this project is the Live Tool Preview, which enables the 
 - L: Select Line
 
 ##### Tool resizing
-- 0: Default size (Minimum)
-- 1: Medium size
-- 2: Maximun size
+- 1: Default size (Minimum)
+- 2: Medium size
+- 3: Maximun size

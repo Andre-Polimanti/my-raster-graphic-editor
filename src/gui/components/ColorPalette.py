@@ -44,7 +44,7 @@ class ColorPalette:
         self.create_squares()
 
     def create_squares(self):
-        y = self.h - 80
+        y = self.h - 145
         x = (self.w - self.square_side) // 2
 
         for color in self.colors:

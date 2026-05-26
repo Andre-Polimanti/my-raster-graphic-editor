@@ -54,7 +54,7 @@ class MouseEvents:
                     color = self.color_palette.get_color(x,y)
                     if color:
                         self.handler.current_tool.set_color(color)
-                        print(f"Current color: {color}")
+                        #print(f"Current color: {color}")
             elif x < self.bound_buttons:
                 pass
 
@@ -69,4 +69,4 @@ class MouseEvents:
                 y = self.normalize_vertical_axis(int(ypos)) # We only update the current cursor position, since the first one was normalized on the moment the button was pressed
                 tool.on_drag(self.x0,self.y0, x,y)
         else:
-            self.handler.cancel_canvas_edit()
+            self.handler.abort_edit()

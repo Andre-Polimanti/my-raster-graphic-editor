@@ -10,14 +10,14 @@ class MainWindow:
     def __init__(self):
         self.title = 'MiniPaint'
 
-        self.palette_section = 120
-        self.draw_section = 1000
-        self.button_section = 80
+        self.palette_section = 180
+        self.draw_section = 1600
+        self.button_section = 140
 
         self.w = self.palette_section + self.draw_section + self.button_section
-        self.h = 600
+        self.h = 1080
 
-        self.color_palette = ColorPalette(self.palette_section, self.h, 60, 0)
+        self.color_palette = ColorPalette(self.palette_section, self.h, self.palette_section//5*3, 0)
         self.canvas = Canvas(self.draw_section, self.h, self.palette_section)
 
         if not(glfw.init()):

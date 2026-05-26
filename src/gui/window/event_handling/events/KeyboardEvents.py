@@ -23,7 +23,7 @@ def close_window(events: KeyboardEvents) -> None:
 
 @register_tool(glfw.KEY_A)
 def abort_edit(events: KeyboardInterrupt) -> None:
-    events.handler.cancel_canvas_edit()
+    events.handler.abort_edit()
 
 @register_tool(glfw.KEY_Q)
 def clear_canvas(events: KeyboardEvents) -> None:
@@ -43,17 +43,17 @@ def set_eraser_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Eraser(events.canvas)
 
 
-@register_tool(glfw.KEY_0)
-def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.current_tool.set_size(0)
-
 @register_tool(glfw.KEY_1)
 def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.current_tool.set_size(1)
+    events.handler.set_tool_size(0)
 
 @register_tool(glfw.KEY_2)
+def set_line_tool(events:KeyboardEvents) -> None:
+    events.handler.set_tool_size(1)
+
+@register_tool(glfw.KEY_3)
 def set_pencil_tool(events:KeyboardEvents) -> None:
-    events.handler.current_tool.set_size(2)
+    events.handler.set_tool_size(2)
 
 
 class KeyboardEvents:
