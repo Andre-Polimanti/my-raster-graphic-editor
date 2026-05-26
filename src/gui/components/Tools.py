@@ -8,21 +8,24 @@ class Tool:
         pass
     def on_drag(self, canvas:Canvas, x0:int,y0:int, x1:int,y1:int, color:tuple):
         pass
+    def set_size(self, new_size:int):
+        self.size = new_size
     def on_release(self, canvas:Canvas):
         canvas.upload_backbuffer()
 
 
 class Pencil(Tool):
-    def __init__(self, size:int):
+    def __init__(self):
         self.last_x = None
         self.last_y = None
-        self.size = size
+        self.size = size = 0
 
     def on_press(self, canvas, x:int,y:int, color):
         self.last_x = x
         self.last_y = y
         draw_pixel(canvas.backbuffer, x,y, color, self.size)
-    
+
+
     def on_drag(self, canvas, x0:int,y0:int, x1:int, y1:int, color):
         draw_line(canvas.backbuffer, self.last_x, self.last_y, x1,y1, color, self.size)
 
@@ -30,8 +33,8 @@ class Pencil(Tool):
         self.last_y = y1
 
 class Line(Tool):
-    def __init__(self, size:int):
-        self.size = size
+    def __init__(self):
+        self.size = 0
 
     def on_drag(self, canvas:Canvas, x0:int,y0:int, x1:int,y1:int, color:tuple):
         canvas.current_edit_clear()

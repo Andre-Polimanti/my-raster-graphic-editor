@@ -13,8 +13,7 @@ class EventHandler:
         self.canvas = canvas
         self.is_drawing = False
 
-        self.current_tool:Tools = None
-        self.tool_size = 1 
+        self.current_tool:Tools = None        
 
         self.mouse = MouseEvents(self)
         self.keyboard = KeyboardEvents(self)

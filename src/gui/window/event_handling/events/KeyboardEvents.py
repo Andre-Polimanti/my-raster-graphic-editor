@@ -1,10 +1,8 @@
 from __future__ import annotations
 import glfw
-
 from typing import Callable
 
 from gui.components.Canvas import Canvas
-
 from gui.components.Tools import Pencil, Line
 
 type ToolCallback = Callable[[KeyboardEvents], None]
@@ -32,13 +30,24 @@ def clear_canvas(events: KeyboardEvents) -> None:
 
 @register_tool(glfw.KEY_L)
 def set_line_tool(events:KeyboardEvents) -> None:
-    line_size = events.tool_size
-    events.handler.current_tool = Line(line_size)
+    events.handler.current_tool = Line()
 
 @register_tool(glfw.KEY_P)
 def set_pencil_tool(events:KeyboardEvents) -> None:
-    pencil_size = events.tool_size
-    events.handler.current_tool = Pencil(pencil_size)
+    events.handler.current_tool = Pencil()
+
+
+@register_tool(glfw.KEY_0)
+def set_line_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool.set_size(0)
+
+@register_tool(glfw.KEY_1)
+def set_line_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool.set_size(1)
+
+@register_tool(glfw.KEY_2)
+def set_pencil_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool.set_size(2)
 
 
 class KeyboardEvents:
@@ -47,8 +56,6 @@ class KeyboardEvents:
 
         self.window = handler.window
         self.canvas:Canvas = handler.canvas
-
-        self.tool_size = handler.tool_size
 
     def key_callback(self, window, key, scancode, action, mods):
         if action == glfw.PRESS:
