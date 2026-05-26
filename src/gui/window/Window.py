@@ -1,18 +1,17 @@
 import glfw
 from OpenGL.GL import *
-from core.FrontBuffer import FrontBuffer
 
-from gui.components.Canvas import Canvas
-from gui.components.ColorPalette import ColorPalette
+from ..components.Canvas import Canvas
+from ..components.ColorPalette import ColorPalette
 
-from gui.window.event_handling.EventHandler import EventHandler
+from .event_handling.EventHandler import EventHandler
 
 class MainWindow:
     def __init__(self):
         self.title = 'MiniPaint'
 
         self.palette_section = 120
-        self.draw_section = 800
+        self.draw_section = 1000
         self.button_section = 80
 
         self.w = self.palette_section + self.draw_section + self.button_section
@@ -54,7 +53,7 @@ class MainWindow:
             glfw.poll_events()
 
             current_w,current_h = glfw.get_framebuffer_size(self.window)
-            
+
             glViewport(0,0, current_w, current_h)
             glClear(GL_COLOR_BUFFER_BIT)
 

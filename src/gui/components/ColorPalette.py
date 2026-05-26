@@ -52,7 +52,7 @@ class ColorPalette:
     def render(self, window_total_h:int):
         x_offset = 0
         y_offset = window_total_h - self.h
-        
+
         glWindowPos2i(x_offset, y_offset)
         glDrawPixels(
             self.w,

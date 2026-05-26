@@ -1,9 +1,11 @@
 from __future__ import annotations
+
 import glfw
+
 from typing import Callable
 
-from gui.components.Canvas import Canvas
-from gui.components.Tools import Eraser, Pencil, Line
+from ....components.Canvas import Canvas
+from ....components.Tools import Eraser, Pencil, Line
 
 type ToolCallback = Callable[[KeyboardEvents], None]
 

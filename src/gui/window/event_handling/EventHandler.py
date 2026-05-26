@@ -1,18 +1,20 @@
 import glfw
 
-from gui.components.Canvas import Canvas
+from ...components import Tools
 
-from gui.components import Tools
-from gui.window.event_handling.events.KeyboardEvents import KeyboardEvents
-from gui.window.event_handling.events.MouseEvents import MouseEvents
+from ...components.Canvas import Canvas
+from ...components.ColorPalette import ColorPalette
+
+from .events.KeyboardEvents import KeyboardEvents
+from .events.MouseEvents import MouseEvents
 
 class EventHandler:
     def __init__(self, renderer):
         self.renderer = renderer
 
         self.window = self.renderer.window
-        self.canvas = self.renderer.canvas
-        self.color_palette = self.renderer.color_palette
+        self.canvas:Canvas = self.renderer.canvas
+        self.color_palette:ColorPalette = self.renderer.color_palette
 
         self.is_drawing = False
         self.current_tool:Tools = None        

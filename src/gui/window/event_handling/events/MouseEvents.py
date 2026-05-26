@@ -1,6 +1,6 @@
 import glfw
 
-from gui.components.Canvas import Canvas
+from ....components.Canvas import Canvas
 
 class MouseEvents:
     def __init__(self, handler):

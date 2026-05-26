@@ -1,4 +1,4 @@
-from gui.components.Canvas import Canvas
+from .Canvas import Canvas
 
 from lib.primitives.lines.bresenham import draw_line
 from lib.draw_pixel import draw_pixel
