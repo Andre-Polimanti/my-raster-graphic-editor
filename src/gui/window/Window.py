@@ -17,7 +17,7 @@ class MainWindow:
         self.w = self.palette_section + self.draw_section + self.button_section
         self.h = 600
 
-        self.color_palette = ColorPalette(self.palette_section, self.h, 60)
+        self.color_palette = ColorPalette(self.palette_section, self.h, 60, 0)
         self.canvas = Canvas(self.draw_section, self.h, self.palette_section)
 
         if not(glfw.init()):

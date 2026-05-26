@@ -8,15 +8,16 @@ class Tool:
         self.canvas = canvas
         self.color = (0,0,0,255)
         self.size = 0
-        pass
 
     def on_press(self, x:int,y:int): pass
-    def on_drag(self, x0:int,y0:int, x1:int,y1:int): pass    
+    def on_drag(self, x0:int,y0:int, x1:int,y1:int): pass
 
     def set_size(self, new_size:int):
         self.size = new_size
+
     def set_color(self, selected_color:tuple):
-        self.color = selected_color
+        if selected_color:
+            self.color = selected_color
 
     def on_release(self):
         self.canvas.upload_backbuffer()
@@ -46,7 +47,9 @@ class Eraser(Pencil):
     def __init__(self,canvas:Canvas):
         super().__init__(canvas)
         self.color = (self.canvas.frontbuffer.bg_color)
-
+        
+    def set_color(self, selected_color:tuple): pass
+    
 class Line(Tool):
     def __init__(self, canvas:Canvas):
         super().__init__(canvas)

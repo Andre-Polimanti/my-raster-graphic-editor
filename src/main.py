@@ -4,8 +4,6 @@ from gui.window.Window import MainWindow
 from lib.primitives.lines.bresenham import draw_line
 
 def main():
-    w = 800
-    h = 600
     app = MainWindow()
 
     # max_w = w - 1

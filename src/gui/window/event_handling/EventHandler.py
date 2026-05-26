@@ -17,11 +17,15 @@ class EventHandler:
         self.color_palette:ColorPalette = self.renderer.color_palette
 
         self.is_drawing = False
-        self.current_tool:Tools = None        
+        self.current_tool:Tools = None      
+        self.current_color = (0,0,0,255)
 
         self.mouse = MouseEvents(self)
         self.keyboard = KeyboardEvents(self)
     
+    def set_color(self, new_color:tuple):
+        self.current_color = new_color
+
     def cancel_canvas_edit(self):
         if self.mouse.is_drawing:
             self.mouse.stop_drawing()
