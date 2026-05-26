@@ -19,3 +19,8 @@ A feature presented in this project is the Live Tool Preview, which enables the 
 #### Tool shortcuts
 - P: Select Pencil
 - L: Select Line
+
+##### Tool resizing
+- 0: Default size (Minimum)
+- 1: Medium size
+- 2: Maximun size
