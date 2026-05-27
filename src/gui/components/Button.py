@@ -3,7 +3,7 @@ from PIL import Image
 import os
 from core.FrontBuffer import FrontBuffer
 
-# só precisa adicionar funcionalidade para eles, depois vou colocar
+# só precisa adicionar funcionalidade para eles, depois vou colocar e esse PIL é só dar pip install Pillow, ele serve para ler as imagens .png
 
 class Button:
     def __init__(self, x: int, y: int, width: int, height: int, color: tuple, action: str, icon_path: str = None):
