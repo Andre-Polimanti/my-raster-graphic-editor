@@ -5,6 +5,7 @@ from ..components.Canvas import Canvas
 from ..components.ColorPalette import ColorPalette
 
 from .event_handling.EventHandler import EventHandler
+from ..components.Button import ButtonsPanel
 
 class MainWindow:
     def __init__(self):
@@ -19,6 +20,9 @@ class MainWindow:
 
         self.color_palette = ColorPalette(self.palette_section, self.h, self.palette_section//5*3, 0)
         self.canvas = Canvas(self.draw_section, self.h, self.palette_section)
+
+        buttons_offset = self.palette_section + self.draw_section
+        self.buttons_panel = ButtonsPanel(self.button_section, self.h, buttons_offset, self.canvas)
 
         if not(glfw.init()):
             print("Failed to start GLFW")
@@ -59,6 +63,7 @@ class MainWindow:
 
             self.color_palette.render(current_h)
             self.canvas.render(current_w,current_h)
+            self.buttons_panel.render(current_h)
 
             glfw.swap_buffers(self.window)
         glfw.terminate()
