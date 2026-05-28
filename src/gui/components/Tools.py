@@ -8,8 +8,6 @@ from lib.others.Rectangle import draw_rectangle
 
 from lib.others.FloodFill import flood_fill
 
-
-
 class Tool:
     def __init__(self, canvas:Canvas):
         self.canvas = canvas

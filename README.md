@@ -33,3 +33,7 @@ A feature presented in this project is the Live Tool Preview, which enables the 
 - 1: Default size (Minimum)
 - 2: Medium size
 - 3: Maximun size
+
+### Mouse
+- The button with an X is for clearing the Canvas
+- The button with an Circle inside is for exporting the current canvas as an image archive

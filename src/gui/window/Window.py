@@ -1,6 +1,8 @@
 import glfw
 from OpenGL.GL import *
 
+from gui.components.Buttons import ButtonList
+
 from ..components.Canvas import Canvas
 from ..components.ColorPalette import ColorPalette
 
@@ -19,6 +21,7 @@ class MainWindow:
 
         self.color_palette = ColorPalette(self.palette_section, self.h, self.palette_section//5*3, 0)
         self.canvas = Canvas(self.draw_section, self.h, self.palette_section)
+        self.button_menu = ButtonList(self.button_section, self.h, self.palette_section+self.draw_section)
 
         if not(glfw.init()):
             print("Failed to start GLFW")
@@ -59,6 +62,7 @@ class MainWindow:
 
             self.color_palette.render(current_h)
             self.canvas.render(current_w,current_h)
+            self.button_menu.render()
 
             glfw.swap_buffers(self.window)
         glfw.terminate()

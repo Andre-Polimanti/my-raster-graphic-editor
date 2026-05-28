@@ -4,6 +4,8 @@ from ...components import Tools
 
 from ...components.Canvas import Canvas
 from ...components.ColorPalette import ColorPalette
+from ...components.Buttons import ButtonList
+
 
 from .events.KeyboardEvents import KeyboardEvents
 from .events.MouseEvents import MouseEvents
@@ -15,6 +17,7 @@ class EventHandler:
         self.window = self.renderer.window
         self.canvas:Canvas = self.renderer.canvas
         self.color_palette:ColorPalette = self.renderer.color_palette
+        self.button_menu:ButtonList = self.renderer.button_menu
 
         self.is_drawing = False
         self.current_tool:Tools = None      

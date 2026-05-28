@@ -2,6 +2,7 @@ import glfw
 
 from ....components.ColorPalette import ColorPalette
 from ....components.Canvas import Canvas
+from ....components.Buttons import ButtonList
 
 class MouseEvents:
     def __init__(self, handler):        
@@ -11,6 +12,7 @@ class MouseEvents:
 
         self.color_palette:ColorPalette = handler.color_palette
         self.canvas: Canvas = handler.canvas
+        self.button_menu:ButtonList = handler.button_menu
     
         self.x0 = 0
         self.y0 = 0
@@ -27,13 +29,27 @@ class MouseEvents:
     def normalize_vertical_axis(self, ypos): #It's inverted by default
         return self.renderer.h - int(ypos) - 1
     
-    def button_callback(self, window, button, action, mods):
-        tool = self.handler.current_tool
-        if not tool or button != glfw.MOUSE_BUTTON_LEFT:
+    def button_callback(self, window, button, action, mods):        
+        if button != glfw.MOUSE_BUTTON_LEFT:
             return
         
         x,y =  glfw.get_cursor_pos(window)
         y = self.normalize_vertical_axis(int(y))
+
+        if x < self.bound_buttons and action == glfw.PRESS:
+            local_x = int(x - self.bound_canvas) 
+            
+            for btn in self.button_menu.buttons:
+                if btn.was_clicked(local_x, y):
+                    if btn.func == "Clear":
+                        print("Limpando Canvas!")
+                        self.canvas.clear()
+                    elif btn.func == "Save":
+                        print("Salvar imagem!")
+
+        tool = self.handler.current_tool
+        if not tool:
+            return
 
         if self.bound_palette <= x < self.bound_canvas:
             x = int(x - self.bound_palette)
@@ -55,8 +71,6 @@ class MouseEvents:
                     if color:
                         self.handler.current_tool.set_color(color)
                         #print(f"Current color: {color}")
-            elif x < self.bound_buttons:
-                pass
 
     def pos_callback(self, window, xpos, ypos):
         if not self.is_drawing: 
