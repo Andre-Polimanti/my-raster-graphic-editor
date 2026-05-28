@@ -65,6 +65,7 @@ class Line(Tool):
 class Circle(Tool):
     def __init__(self, canvas:Canvas):
         super().__init__(canvas)
+        self.is_filled = False
 
     def on_drag(self, x0:int,y0:int, x1:int,y1:int):
         self.canvas.current_edit_clear()
