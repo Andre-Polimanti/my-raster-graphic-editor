@@ -3,6 +3,10 @@ from .Canvas import Canvas
 from lib.primitives.lines.bresenham import draw_line
 from lib.draw_pixel import draw_pixel
 
+from lib.compounds.Circle import draw_circle
+from lib.compounds.Rectangle import draw_rectangle
+
+
 class Tool:
     def __init__(self, canvas:Canvas):
         self.canvas = canvas
@@ -57,6 +61,39 @@ class Line(Tool):
     def on_drag(self, x0:int,y0:int, x1:int,y1:int):
         self.canvas.current_edit_clear()
         draw_line(self.canvas.backbuffer, x0,y0, x1,y1, self.color, self.size)
+
+class Circle(Tool):
+    def __init__(self, canvas:Canvas):
+        super().__init__(canvas)
+
+    def on_drag(self, x0:int,y0:int, x1:int,y1:int):
+        self.canvas.current_edit_clear()
+        draw_circle(self.canvas.backbuffer, x0,y0, x1,y1, self.color, self.size)
+
+    def switch_is_filled(self):
+        self.is_filled = not self.is_filled
+
+    def on_release(self):
+        if self.is_filled:
+            pass
+        self.canvas.upload_backbuffer()
+
+class Rectangle(Tool):
+    def __init__(self, canvas:Canvas):
+        super().__init__(canvas)
+        self.is_filled = False
+
+    def on_drag(self, x0:int,y0:int, x1:int,y1:int):
+        self.canvas.current_edit_clear()
+        draw_rectangle(self.canvas.backbuffer, x0,y0, x1,y1, self.color, self.size)
+
+    def switch_is_filled(self):
+        self.is_filled = not self.is_filled
+
+    def on_release(self):
+        if self.is_filled:
+            pass
+        self.canvas.upload_backbuffer()
 
 class FloodFill(Tool):
     pass

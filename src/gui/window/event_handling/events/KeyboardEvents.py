@@ -4,8 +4,10 @@ import glfw
 
 from typing import Callable
 
+
 from ....components.Canvas import Canvas
-from ....components.Tools import Eraser, Pencil, Line
+from ....components.Tools import Circle, Rectangle, Eraser, Pencil, Line
+
 
 type ToolCallback = Callable[[KeyboardEvents], None]
 
@@ -42,6 +44,13 @@ def set_pencil_tool(events:KeyboardEvents) -> None:
 def set_eraser_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Eraser(events.canvas)
 
+@register_tool(glfw.KEY_C)
+def set_circle_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool = Circle(events.canvas)
+
+@register_tool(glfw.KEY_R)
+def set_rectangle_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool = Rectangle(events.canvas)
 
 @register_tool(glfw.KEY_1)
 def set_line_tool(events:KeyboardEvents) -> None:

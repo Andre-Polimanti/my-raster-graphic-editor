@@ -21,6 +21,9 @@ A feature presented in this project is the Live Tool Preview, which enables the 
 - E: Select Eraser
 - L: Select Line
 
+- C: Select Circle
+- R: Select Rectangle
+
 ##### Tool resizing
 - 1: Default size (Minimum)
 - 2: Medium size
