@@ -1,4 +1,4 @@
-from ..draw_pixel import draw_pixel
+from ..DrawPixel import draw_pixel
 
 def draw_circle(buffer, x0:int,y0:int, x1:int,y1:int, color:tuple, size:int):
     # Calcula a distância ao quadrado (Teorema de Pitágoras sem a raiz)

@@ -1,4 +1,4 @@
-from lib.draw_pixel import draw_pixel
+from lib.DrawPixel import draw_pixel
 
 def draw_line(buffer, x1:int,y1:int, x2:int,y2:int, color:tuple, size:int):
     dx = abs(x2 - x1)

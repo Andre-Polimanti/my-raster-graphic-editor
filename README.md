@@ -22,8 +22,12 @@ A feature presented in this project is the Live Tool Preview, which enables the 
 - L: Select Line
 
 
+
 - C: Select Circle
 - R: Select Rectangle
+
+
+- F: Filling Tool Switch
 
 ##### Tool resizing
 - 1: Default size (Minimum)

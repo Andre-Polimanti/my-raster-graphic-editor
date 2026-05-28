@@ -1,12 +1,12 @@
 from .Canvas import Canvas
 
 from lib.primitives.lines.bresenham import draw_line
-from lib.draw_pixel import draw_pixel
+from lib.DrawPixel import draw_pixel
 
 from lib.others.Circle import draw_circle
 from lib.others.Rectangle import draw_rectangle
 
-from lib.others.flood_fill import flood_fill
+from lib.others.FloodFill import flood_fill
 
 
 
@@ -126,7 +126,7 @@ class Rectangle(Tool):
 class Bucket(Tool):
     def __init__(self, canvas:Canvas):
         super().__init__(canvas)
-        
+
     def on_press(self, x, y):
         flood_fill(self.canvas.frontbuffer, x,y, self.color)
 

@@ -1,4 +1,4 @@
-from ..draw_pixel import draw_pixel
+from ..DrawPixel import draw_pixel
 
 def flood_fill(buffer, x:int,y:int, color:tuple):
     color_to_change = buffer.get_pixel(x,y)
@@ -9,6 +9,9 @@ def flood_fill(buffer, x:int,y:int, color:tuple):
 
     while len(pixels_to_go) > 0:
         x1,y1 = pixels_to_go.pop()
+
+        if x1 < 0 or x1 >= buffer.w or y1 < 0 or y1 >= buffer.h:
+            continue
 
         current_color = buffer.get_pixel(x1,y1)
 
