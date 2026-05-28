@@ -27,6 +27,10 @@ class MainWindow:
             print("Failed to start GLFW")
             return
         
+        screen = glfw.get_primary_monitor()
+        
+        self.window = glfw.create_window(self.w, self.h, self.title, screen, None)
+
         self.window = glfw.create_window(self.w,self.h, self.title, None,None)
         if not(self.window):
             print("Failed to create Main Window")

@@ -1,5 +1,7 @@
 import glfw
 
+from lib.archives.image import export_canvas
+
 from ....components.ColorPalette import ColorPalette
 from ....components.Canvas import Canvas
 from ....components.Buttons import ButtonList
@@ -42,10 +44,12 @@ class MouseEvents:
             for btn in self.button_menu.buttons:
                 if btn.was_clicked(local_x, y):
                     if btn.func == "Clear":
-                        print("Limpando Canvas!")
                         self.canvas.clear()
+                        #print("Canvas cleared by mouse instruction!")
+
                     elif btn.func == "Save":
-                        print("Salvar imagem!")
+                        export_canvas(self.canvas)
+                        #print("Salving image!")
 
         tool = self.handler.current_tool
         if not tool:
