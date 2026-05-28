@@ -6,7 +6,7 @@ from typing import Callable
 
 
 from ....components.Canvas import Canvas
-from ....components.Tools import Circle, Rectangle, Eraser, Pencil, Line
+from ....components.Tools import Bucket, Circle, Rectangle, Eraser, Pencil, Line
 
 
 type ToolCallback = Callable[[KeyboardEvents], None]
@@ -52,17 +52,26 @@ def set_circle_tool(events:KeyboardEvents) -> None:
 def set_rectangle_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Rectangle(events.canvas)
 
-@register_tool(glfw.KEY_1)
-def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(0)
+@register_tool(glfw.KEY_B)
+def set_bucket_tool(events:KeyboardEvents) -> None:
+    events.handler.current_tool = Bucket(events.canvas)
 
-@register_tool(glfw.KEY_2)
+@register_tool(glfw.KEY_F)
+def set_bucket_tool(events:KeyboardEvents) -> None:
+    if events.handler.current_tool:
+        events.handler.current_tool.switch_is_filled()
+
+@register_tool(glfw.KEY_1)
 def set_line_tool(events:KeyboardEvents) -> None:
     events.handler.set_tool_size(1)
 
+@register_tool(glfw.KEY_2)
+def set_line_tool(events:KeyboardEvents) -> None:
+    events.handler.set_tool_size(2)
+
 @register_tool(glfw.KEY_3)
 def set_pencil_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(2)
+    events.handler.set_tool_size(3)
 
 
 class KeyboardEvents:
