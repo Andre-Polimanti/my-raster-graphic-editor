@@ -1,10 +1,10 @@
 from OpenGL.GL import *
 
-from core.FrontBuffer import FrontBuffer
-from core.BackBuffer import BackBuffer
+from core.front_buffer import FrontBuffer
+from core.back_buffer import BackBuffer
 
-from lib.others.Circle import draw_circle
-from lib.others.Rectangle import draw_rectangle
+from lib.others.shapes.circle.from_center import draw_circle
+from lib.others.shapes.rectangle.bresenham import draw_rectangle
 
 from lib.primitives.lines.bresenham import draw_line
 
@@ -28,7 +28,7 @@ class Button:
         x1 = self.x + self.mid_point
         y1 = self.y - self.mid_point
 
-        draw_rectangle(buffer, x0,y0, x1,y1, (0,0,0,255), 1)
+        draw_rectangle(buffer, x0,y0, x1,y1, (0,0,0,255), 0)
         
         if(self.func == "Clear"):
             draw_x(buffer, x0,y0, x1,y1, (255,0,0,255), 1)

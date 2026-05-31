@@ -1,13 +1,18 @@
 from __future__ import annotations
-
 import glfw
 
+from ....components.canvas import Canvas
+from ....components.tools.eraser import Eraser
+from ....components.tools.pencil import Pencil
+from ....components.tools.line import Line
+
+from ....components.tools.bucket import Bucket
+
+from ....components.tools.shapes.circle import Circle
+from ....components.tools.shapes.rectangle import Rectangle
+
+
 from typing import Callable
-
-
-from ....components.Canvas import Canvas
-from ....components.Tools import Bucket, Circle, Rectangle, Eraser, Pencil, Line
-
 
 type ToolCallback = Callable[[KeyboardEvents], None]
 
@@ -44,6 +49,7 @@ def set_pencil_tool(events:KeyboardEvents) -> None:
 def set_eraser_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Eraser(events.canvas)
 
+
 @register_tool(glfw.KEY_C)
 def set_circle_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Circle(events.canvas)
@@ -52,9 +58,12 @@ def set_circle_tool(events:KeyboardEvents) -> None:
 def set_rectangle_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Rectangle(events.canvas)
 
+
+
 @register_tool(glfw.KEY_B)
 def set_bucket_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Bucket(events.canvas)
+
 
 @register_tool(glfw.KEY_F)
 def set_bucket_tool(events:KeyboardEvents) -> None:
@@ -63,15 +72,15 @@ def set_bucket_tool(events:KeyboardEvents) -> None:
 
 @register_tool(glfw.KEY_1)
 def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(1)
+    events.handler.set_tool_size(0)
 
 @register_tool(glfw.KEY_2)
 def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(2)
+    events.handler.set_tool_size(1)
 
 @register_tool(glfw.KEY_3)
 def set_pencil_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(3)
+    events.handler.set_tool_size(2)
 
 
 class KeyboardEvents:

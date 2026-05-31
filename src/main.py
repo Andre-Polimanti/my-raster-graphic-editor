@@ -1,7 +1,6 @@
 from OpenGL.GL import *
 
-from gui.window.Window import MainWindow
-from lib.primitives.lines.bresenham import draw_line
+from gui.window.window import MainWindow
 
 def main():
     app = MainWindow()

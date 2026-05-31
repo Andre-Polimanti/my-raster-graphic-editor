@@ -1,4 +1,4 @@
-from ..DrawPixel import draw_pixel
+from ....draw_pixel import paint
 
 def draw_circle(buffer, x0:int,y0:int, x1:int,y1:int, color:tuple, size:int):
     # Calcula a distância ao quadrado (Teorema de Pitágoras sem a raiz)
@@ -11,7 +11,7 @@ def draw_circle(buffer, x0:int,y0:int, x1:int,y1:int, color:tuple, size:int):
         r += 1
         
     if r == 0:
-        draw_pixel(buffer, x1, y1, color, size)
+        paint(buffer, x1, y1, color, size)
         return
 
     x = 0
@@ -19,14 +19,14 @@ def draw_circle(buffer, x0:int,y0:int, x1:int,y1:int, color:tuple, size:int):
     d = 3 - 2 * r 
     
     def draw_circle_points(cx, cy, px, py):
-        draw_pixel(buffer, cx + px, cy + py, color, size)
-        draw_pixel(buffer, cx - px, cy + py, color, size)
-        draw_pixel(buffer, cx + px, cy - py, color, size)
-        draw_pixel(buffer, cx - px, cy - py, color, size)
-        draw_pixel(buffer, cx + py, cy + px, color, size)
-        draw_pixel(buffer, cx - py, cy + px, color, size)
-        draw_pixel(buffer, cx + py, cy - px, color, size)
-        draw_pixel(buffer, cx - py, cy - px, color, size)
+        paint(buffer, cx + px, cy + py, color, size)
+        paint(buffer, cx - px, cy + py, color, size)
+        paint(buffer, cx + px, cy - py, color, size)
+        paint(buffer, cx - px, cy - py, color, size)
+        paint(buffer, cx + py, cy + px, color, size)
+        paint(buffer, cx - py, cy + px, color, size)
+        paint(buffer, cx + py, cy - px, color, size)
+        paint(buffer, cx - py, cy - px, color, size)
 
     while x <= y:
         draw_circle_points(x0, y0, x, y)

@@ -1,14 +1,14 @@
 import glfw
 
-from ...components import Tools
+from ...components.tools.base.tool import Tool
 
-from ...components.Canvas import Canvas
-from ...components.ColorPalette import ColorPalette
-from ...components.Buttons import ButtonList
+from ...components.canvas import Canvas
+from ...components.color_palette import ColorPalette
+from ...components.buttons import ButtonList
 
 
-from .events.KeyboardEvents import KeyboardEvents
-from .events.MouseEvents import MouseEvents
+from .events.keyboard_events import KeyboardEvents
+from .events.mouse_events import MouseEvents
 
 class EventHandler:
     def __init__(self, renderer):
@@ -20,13 +20,13 @@ class EventHandler:
         self.button_menu:ButtonList = self.renderer.button_menu
 
         self.is_drawing = False
-        self.current_tool:Tools = None      
+        self.current_tool:Tool = None      
         self.current_color = (0,0,0,255)
 
         self.mouse = MouseEvents(self)
         self.keyboard = KeyboardEvents(self)
     
-    def set_tool(self, tool:Tools):
+    def set_tool(self, tool:Tool):
         self.current_tool = tool
 
     def set_tool_size(self, size:int):

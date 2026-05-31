@@ -1,4 +1,4 @@
-from lib.DrawPixel import draw_pixel
+from lib.draw_pixel import paint
 
 def draw_line(buffer, x1:int,y1:int, x2:int,y2:int, color:tuple, size:int):
     dx = abs(x2 - x1)
@@ -10,7 +10,7 @@ def draw_line(buffer, x1:int,y1:int, x2:int,y2:int, color:tuple, size:int):
     if dx >= dy:
         p = 2 * dy -dx
         while True:
-            draw_pixel(buffer, x1,y1, color, size)
+            paint(buffer, x1,y1, color, size)
             if x1 == x2: break
             
             x1 += x_incr
@@ -22,7 +22,7 @@ def draw_line(buffer, x1:int,y1:int, x2:int,y2:int, color:tuple, size:int):
     else:
         p = 2 * dx - dy
         while True:
-            draw_pixel(buffer, x1,y1, color, size)
+            paint(buffer, x1,y1, color, size)
             if y1 == y2: break
 
             y1 += y_incr

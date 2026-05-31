@@ -1,7 +1,7 @@
 from OpenGL.GL import *
 
-from core.BackBuffer import BackBuffer
-from core.FrontBuffer import FrontBuffer
+from core.back_buffer import BackBuffer
+from core.front_buffer import FrontBuffer
 
 class ColorSquare:
     def __init__(self, x:int,y:int, side:int, color:tuple[int,int,int,int]):

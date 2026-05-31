@@ -1,7 +1,7 @@
 from OpenGL.GL import *
 from PIL import Image
 
-from gui.components.Canvas import Canvas
+from gui.components.canvas import Canvas
 
 def export_canvas(canvas:Canvas, filename="src/lib/archives/my_drawing.png"):
     w = canvas.w

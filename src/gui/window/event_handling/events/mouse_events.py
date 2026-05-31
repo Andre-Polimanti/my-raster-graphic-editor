@@ -2,9 +2,9 @@ import glfw
 
 from lib.archives.image import export_canvas
 
-from ....components.ColorPalette import ColorPalette
-from ....components.Canvas import Canvas
-from ....components.Buttons import ButtonList
+from ....components.color_palette import ColorPalette
+from ....components.canvas import Canvas
+from ....components.buttons import ButtonList
 
 class MouseEvents:
     def __init__(self, handler):        

@@ -1,7 +1,7 @@
 from OpenGL.GL import *
 
-from core.FrontBuffer import FrontBuffer
-from core.BackBuffer import BackBuffer
+from core.front_buffer import FrontBuffer
+from core.back_buffer import BackBuffer
 
 class Canvas:
     def __init__(self, width:int,height:int, my_x_offset:int):

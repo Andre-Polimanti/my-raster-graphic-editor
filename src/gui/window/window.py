@@ -1,12 +1,12 @@
 import glfw
 from OpenGL.GL import *
 
-from gui.components.Buttons import ButtonList
+from gui.components.buttons import ButtonList
 
-from ..components.Canvas import Canvas
-from ..components.ColorPalette import ColorPalette
+from ..components.canvas import Canvas
+from ..components.color_palette import ColorPalette
 
-from .event_handling.EventHandler import EventHandler
+from .event_handling.event_handler import EventHandler
 
 class MainWindow:
     def __init__(self):
