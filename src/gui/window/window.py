@@ -1,8 +1,7 @@
 import glfw
 from OpenGL.GL import *
 
-from gui.components.buttons import ButtonList
-
+from ..components.menu.button_list import ButtonList
 from ..components.canvas import Canvas
 from ..components.color_palette import ColorPalette
 

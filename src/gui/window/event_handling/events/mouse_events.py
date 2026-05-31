@@ -4,7 +4,7 @@ from lib.archives.image import export_canvas
 
 from ....components.color_palette import ColorPalette
 from ....components.canvas import Canvas
-from ....components.buttons import ButtonList
+from ....components.menu.button_list import ButtonList
 
 class MouseEvents:
     def __init__(self, handler):        
