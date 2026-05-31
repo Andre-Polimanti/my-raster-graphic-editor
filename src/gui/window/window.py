@@ -3,7 +3,7 @@ from OpenGL.GL import *
 
 from ..components.menu.button_list import ButtonList
 from ..components.canvas import Canvas
-from ..components.color_palette import ColorPalette
+from ..components.palette.color_palette import ColorPalette
 
 from .event_handling.event_handler import EventHandler
 
@@ -63,7 +63,7 @@ class MainWindow:
             glViewport(0,0, current_w, current_h)
             glClear(GL_COLOR_BUFFER_BIT)
 
-            self.color_palette.render(current_h)
+            self.color_palette.render()
             self.canvas.render(current_w,current_h)
             self.button_menu.render()
 

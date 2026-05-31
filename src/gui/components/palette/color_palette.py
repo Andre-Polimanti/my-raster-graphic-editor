@@ -3,20 +3,7 @@ from OpenGL.GL import *
 from core.back_buffer import BackBuffer
 from core.front_buffer import FrontBuffer
 
-class ColorSquare:
-    def __init__(self, x:int,y:int, side:int, color:tuple[int,int,int,int]):
-        self.x = x
-        self.y = y
-        self.side = side
-        self.color = color
-
-    def is_inside(self, px, py):
-        return (self.x <= px < self.x + self.side) and (self.y <= py < self.y + self.side)
-
-    def draw(self, buffer):
-        for y in range(self.y, self.y + self.side):
-            for x in range(self.x, self.x + self.side):
-                buffer.put_pixel(x, y, self.color)
+from .color_square import ColorSquare
 
 class ColorPalette:
     def __init__(self, width:int,height:int, square_side:int, my_x_offset): 
@@ -62,11 +49,8 @@ class ColorPalette:
                 return square.color
         return None
 
-
-    def render(self, window_total_h:int):
-        y_offset = window_total_h - self.h
-
-        glWindowPos2i(self.my_x_offset, y_offset)
+    def render(self):
+        glWindowPos2i(self.my_x_offset, 0)
         glDrawPixels(
             self.w,
             self.h,

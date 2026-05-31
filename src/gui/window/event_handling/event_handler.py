@@ -3,7 +3,7 @@ import glfw
 from ...components.tools.base.tool import Tool
 
 from ...components.canvas import Canvas
-from ...components.color_palette import ColorPalette
+from ...components.palette.color_palette import ColorPalette
 from ...components.menu.button_list import ButtonList
 
 

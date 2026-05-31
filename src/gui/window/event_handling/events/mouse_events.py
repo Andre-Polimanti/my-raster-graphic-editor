@@ -2,7 +2,7 @@ import glfw
 
 from lib.archives.image import export_canvas
 
-from ....components.color_palette import ColorPalette
+from ....components.palette.color_palette import ColorPalette
 from ....components.canvas import Canvas
 from ....components.menu.button_list import ButtonList
 
