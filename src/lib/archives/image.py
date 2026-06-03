@@ -13,4 +13,4 @@ def export_canvas(canvas:Canvas, filename="src/lib/archives/my_drawing.png"):
     image = image.transpose(Image.FLIP_TOP_BOTTOM)
     
     image.save(filename)
-    print(f"Imagem salva com sucesso como: {filename}")
+    print(f"Image saved as: {filename}")
