@@ -30,7 +30,6 @@ class MainWindow:
         
         self.window = glfw.create_window(self.w, self.h, self.title, screen, None)
 
-        self.window = glfw.create_window(self.w,self.h, self.title, None,None)
         if not(self.window):
             print("Failed to create Main Window")
             glfw.terminate()
@@ -58,13 +57,11 @@ class MainWindow:
         while not(glfw.window_should_close(self.window)):
             glfw.poll_events()
 
-            current_w,current_h = glfw.get_framebuffer_size(self.window)
-
-            glViewport(0,0, current_w, current_h)
+            glViewport(0,0, self.w, self.h)
             glClear(GL_COLOR_BUFFER_BIT)
 
             self.color_palette.render()
-            self.canvas.render(current_w,current_h)
+            self.canvas.render(self.w,self.h)
             self.button_menu.render()
 
             glfw.swap_buffers(self.window)
