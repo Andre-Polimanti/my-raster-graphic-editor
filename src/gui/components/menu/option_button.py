@@ -3,7 +3,7 @@ from lib.others.shapes.rectangle.bresenham import draw_rectangle
 
 from lib.others.shapes.sub_set import draw_x
 
-class Button:
+class OptionButton:
     def __init__(self, x:int, y:int, side:int, func):
         self.x = x
         self.y = y
@@ -23,7 +23,7 @@ class Button:
         x1 = self.x + self.mid_point
         y1 = self.y - self.mid_point
 
-        draw_rectangle(buffer, x0,y0, x1,y1, (0,0,0,255), 0)
+        draw_rectangle(buffer, x0,y0, x1,y1, (0,0,0,255), 1)
         
         if(self.func == "Clear"): # The button used for clearing the Canvas has a red x in it
             pad = 10

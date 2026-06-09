@@ -1,0 +1,28 @@
+[33me4e29ab[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Simple ass push
+[33mb7de271[m General refactoring and optimization
+[33m16a5638[m Render refactoring
+[33m2cb1f68[m GUI refactoring
+[33m361d66b[m Subtle refactoring on Canvas
+[33m1e28bb7[m Commenting on Canvas Buttons
+[33m4c676c2[m Commenting on ColorPalette
+[33m35e2210[m Commenting on Canvas and a subtle refactoring
+[33mb6a260c[m Commenting on rectangle drawing
+[33m3489c0c[m Refactoring and commenting on circle drawing
+[33mcf9e237[m Adding comments and refactoring archiving class
+[33m2582fb3[m Adding comments on memory handling classes
+[33meaf3e44[m Improvement on README
+[33mb7c6e76[m Rewriting to english
+[33mcbf5e66[m More reorganizing
+[33m6a36e39[m More renaming and reorganization
+[33m8e687b3[m Renaming on several things
+[33m74f7bf7[m Concluding V1
+[33m9b507b2[m Adding archive manipulation buttons
+[33m021228a[m Reseting master
+[33md43cdf7[m Adding safety measures on FloodFill
+[33mca92f99[m Adding Bucket tool and Filled functionalitie for Circle and Rectangle
+[33m4f1e894[m Correcting Circle Tool error in its initmethod
+[33m2749cd1[m Implementations of Rectangle and Circle Tools
+[33m243d232[m[33m ([m[1;31morigin/dev-juliana[m[33m)[m added a new comment
+[33m4a15c61[m Integrate ButtonsPanel into MainWindow
+[33m3c724d1[m Delete src/Images/image
+[33md984958[m Add files via upload

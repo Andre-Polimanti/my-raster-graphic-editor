@@ -10,7 +10,6 @@ class FrontBuffer:
     def is_valid_pixel(self, x:int,y:int):
         return (0 <= x < self.w and 0 <= y < self.h)
     
-
     # Since we are working with a 1D array, we have to adapt our memory accessing methods.
     # (y * self.w) -> jumps the image lines that are anterior to the pixel we want to access
     # ((y * self.w) + x) -> on the line of the wanted pixel, we go to its column

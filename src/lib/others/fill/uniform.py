@@ -16,7 +16,7 @@ def flood_fill(buffer, x:int,y:int, color:tuple):
         current_color = buffer.get_pixel(x1,y1)
 
         if current_color == color_to_change:
-            paint(buffer, x1,y1, color, 0)
+            paint(buffer, x1,y1, color, 1)
 
             pixels_to_go.append((x1 + 1, y1))
             pixels_to_go.append((x1 - 1, y1))

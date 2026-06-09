@@ -8,24 +8,35 @@ class BackBuffer(FrontBuffer):
         self.front_buffer = front_buffer
 
         self.dirty_pixels = set() # Pixels touched by the edit.
-
-    def put_pixel(self, x:int, y:int, color:tuple):
-        if super().put_pixel(x,y, color):
-            self.dirty_pixels.add((x,y))
-
-    def get_dirty_pixels(self):
-        return self.dirty_pixels
     
     def clear(self):
+        r, g, b, a = self.bg_color
+        pixels = self.pixels
+        
+        w = self.w
+
         for x, y in self.dirty_pixels:
-            super().put_pixel(x, y, self.bg_color)
+            idx = ((y * w) + x) * 4
+            pixels[idx]     = r
+            pixels[idx + 1] = g
+            pixels[idx + 2] = b
+            pixels[idx + 3] = a
 
         self.dirty_pixels.clear()
+
         #print("BackBuffer cleared!")
     
     def commit(self):
-        for x,y in self.get_dirty_pixels():
-            color = self.get_pixel(x,y)
-            self.front_buffer.put_pixel(x,y,color) # The pixels touched by the edit are painted on the FrontBuffer
+        front_buffer_px = self.front_buffer.pixels
+
+        pixels = self.pixels
+        w = self.w
+
+        for x,y in self.dirty_pixels:
+            idx = ((y * w) + x) * 4
+            front_buffer_px[idx]     = pixels[idx]
+            front_buffer_px[idx + 1] = pixels[idx + 1]
+            front_buffer_px[idx + 2] = pixels[idx + 2]
+            front_buffer_px[idx + 3] = pixels[idx + 3]
             
         self.clear()

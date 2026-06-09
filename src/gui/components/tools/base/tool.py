@@ -4,7 +4,7 @@ class Tool:
     def __init__(self, canvas:Canvas):
         self.canvas = canvas
         self.color = (0,0,0,255)
-        self.size = 0
+        self.size = 1
 
     def on_press(self, x:int,y:int): pass
     def on_drag(self, x0:int,y0:int, x1:int,y1:int): pass

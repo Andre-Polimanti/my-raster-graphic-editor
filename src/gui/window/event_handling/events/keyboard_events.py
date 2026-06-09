@@ -71,15 +71,15 @@ def set_bucket_tool(events:KeyboardEvents) -> None:
 
 @register_tool(glfw.KEY_1)
 def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(0)
+    events.handler.set_tool_size(1)
 
 @register_tool(glfw.KEY_2)
 def set_line_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(1)
+    events.handler.set_tool_size(2)
 
 @register_tool(glfw.KEY_3)
 def set_pencil_tool(events:KeyboardEvents) -> None:
-    events.handler.set_tool_size(2)
+    events.handler.set_tool_size(3)
 
 
 class KeyboardEvents:

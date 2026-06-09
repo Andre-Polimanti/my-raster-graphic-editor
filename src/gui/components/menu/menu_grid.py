@@ -3,9 +3,9 @@ from OpenGL.GL import *
 from core.front_buffer import FrontBuffer
 from core.back_buffer import BackBuffer
 
-from .button import Button
+from .option_button import OptionButton
 
-class ButtonList:
+class MenuGrid:
     def __init__(self, width:int,height:int):
         self.w = width
         self.h = height
@@ -18,10 +18,8 @@ class ButtonList:
         self.buttons = self.create_buttons()
 
         for button in self.buttons:
-            button.draw(self.backbuffer)
-        
-        self.backbuffer.commit()
-
+            button.draw(self.frontbuffer)
+    
         # This class contains buttons with drawn shapes used for saving or clearing the Canvas
 
     def create_buttons(self):
@@ -32,8 +30,8 @@ class ButtonList:
         save_y = self.current_y - side - 60
 
         # Depending on the function of the button, passed as a string here, the button has a different appearance
-        clear_button = Button(center_x, clear_y, side, "Clear")
-        save_button = Button(center_x, save_y, side, "Save")
+        clear_button = OptionButton(center_x, clear_y, side, "Clear")
+        save_button = OptionButton(center_x, save_y, side, "Save")
 
         return [clear_button, save_button]
 

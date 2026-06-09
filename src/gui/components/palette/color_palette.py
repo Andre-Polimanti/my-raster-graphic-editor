@@ -12,7 +12,6 @@ class ColorPalette:
         self.square_side = square_side
 
         self.frontbuffer = FrontBuffer(self.w,self.h, (62,62,62,255))
-        self.backbuffer = BackBuffer(self.frontbuffer)
 
         self.squares: list[ColorSquare] = []
 
@@ -38,11 +37,10 @@ class ColorPalette:
             square = ColorSquare(x,y, self.square_side, color)
             self.squares.append(square)
 
-            square.draw(self.backbuffer)
+            square.draw(self.frontbuffer)
 
             y -= self.square_side + 10
 
-        self.backbuffer.commit()
 
     def get_color(self, x, y):
         for square in self.squares:

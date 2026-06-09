@@ -4,7 +4,7 @@ from archiving.image import export_canvas
 
 from ....components.palette.color_palette import ColorPalette
 from ....components.canvas import Canvas
-from ....components.menu.button_list import ButtonList
+from ....components.menu.menu_grid import MenuGrid
 
 class MouseEvents:
     def __init__(self, handler):        
@@ -14,16 +14,16 @@ class MouseEvents:
 
         self.color_palette:ColorPalette = handler.color_palette
         self.canvas: Canvas = handler.canvas
-        self.button_menu:ButtonList = handler.button_menu
+        self.button_menu:MenuGrid = handler.button_menu
     
         self.x0 = 0
         self.y0 = 0
 
         self.is_drawing = False
 
-        self.bound_palette = self.renderer.palette_section
-        self.bound_canvas = self.renderer.palette_section + self.renderer.canvas_section
-        self.bound_menu = self.bound_canvas + self.renderer.menu_section
+        self.bound_palette = self.renderer.palette_width
+        self.bound_canvas = self.renderer.palette_width + self.renderer.canvas_width
+        self.bound_menu = self.bound_canvas + self.renderer.menu_width
 
     def stop_drawing(self):
         self.is_drawing = False
