@@ -1,6 +1,6 @@
 import glfw
 
-from lib.archives.image import export_canvas
+from archiving.image import export_canvas
 
 from ....components.palette.color_palette import ColorPalette
 from ....components.canvas import Canvas
