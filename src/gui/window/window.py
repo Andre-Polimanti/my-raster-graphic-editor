@@ -18,7 +18,7 @@ class MainWindow:
         self.w = self.palette_section + self.draw_section + self.button_section
         self.h = 1080
 
-        self.color_palette = ColorPalette(self.palette_section, self.h, self.palette_section//5*3, 0)
+        self.color_palette = ColorPalette(self.palette_section, self.h, self.palette_section//5*3)
         self.canvas = Canvas(self.draw_section, self.h, self.palette_section)
         self.button_menu = ButtonList(self.button_section, self.h, self.palette_section+self.draw_section)
 
