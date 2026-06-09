@@ -25,11 +25,11 @@ class Button:
 
         draw_rectangle(buffer, x0,y0, x1,y1, (0,0,0,255), 0)
         
-        if(self.func == "Clear"):
+        if(self.func == "Clear"): # The button used for clearing the Canvas has a red x in it
             pad = 10
             draw_x(buffer, x0+pad,y0-pad, x1-pad,y1+pad, (255,0,0,255), 1)
 
-        elif(self.func == "Save"):
+        elif(self.func == "Save"): # The button used for saving the canvas has a green circle in it
             r = self.mid_point
             pad = 5
             draw_circle(buffer, self.x, self.y, (self.x + r)-pad, self.y+pad, (0,255,0,255), 1)

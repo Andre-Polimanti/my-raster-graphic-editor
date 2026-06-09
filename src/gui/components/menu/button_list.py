@@ -24,6 +24,7 @@ class ButtonList:
         
         self.backbuffer.commit()
 
+        # This class contains buttons with drawn shapes used for saving or clearing the Canvas
 
     def create_buttons(self):
         side = self.w // 2
@@ -32,6 +33,7 @@ class ButtonList:
         clear_y = self.current_y
         save_y = self.current_y - side - 60
 
+        # Depending on the function of the button, passed as a string here, the button has a different appearance
         clear_button = Button(center_x, clear_y, side, "Clear")
         save_button = Button(center_x, save_y, side, "Save")
 
