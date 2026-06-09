@@ -12,9 +12,10 @@ class Canvas:
         self.frontbuffer = FrontBuffer(self.w,self.h, (255,255,255,255))
         self.backbuffer = BackBuffer(self.frontbuffer)
 
-    def render(self, w:int,h:int):
+    def render(self, h:int):
         x_offset = self.my_x_offset
         y_offset = (h - self.h) // 2
+        # On the left, we have the color palette, so we have to put the canvas to the right using an x_offset
 
         glWindowPos2i(x_offset,y_offset)
         glDrawPixels(
@@ -24,7 +25,8 @@ class Canvas:
             GL_UNSIGNED_BYTE,
             bytes(self.frontbuffer.pixels)
         )
-        # When drawing, there will be dirty_pixel from BackBuffer, and, as we want to view a preview of the used tool, we must render the them, the background color of the backbuffer is transparent so we render it over the frontbuffer
+        # We continuously use the FrontBuffer for re-rendering, which is a problem. One that will not be solved in this project.
+
         if len(self.backbuffer.dirty_pixels):
             glEnable(GL_BLEND)
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
@@ -38,6 +40,7 @@ class Canvas:
                 bytes(self.backbuffer.pixels)
             )
             glDisable(GL_BLEND)
+        # When the BakcBuffer has something in its dirty_pixels, there is something being drawn, so we use this for showing a Tool/Edit Preview
 
     def upload_backbuffer(self):
         self.backbuffer.commit()
@@ -47,3 +50,4 @@ class Canvas:
 
     def current_edit_clear(self):
         self.backbuffer.clear()
+        # We can abort an edit without committing it

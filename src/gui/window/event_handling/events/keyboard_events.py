@@ -59,16 +59,15 @@ def set_rectangle_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Rectangle(events.canvas)
 
 
-
 @register_tool(glfw.KEY_B)
 def set_bucket_tool(events:KeyboardEvents) -> None:
     events.handler.current_tool = Bucket(events.canvas)
-
 
 @register_tool(glfw.KEY_F)
 def set_bucket_tool(events:KeyboardEvents) -> None:
     if events.handler.current_tool:
         events.handler.current_tool.switch_is_filled()
+
 
 @register_tool(glfw.KEY_1)
 def set_line_tool(events:KeyboardEvents) -> None:

@@ -61,7 +61,7 @@ class MainWindow:
             glClear(GL_COLOR_BUFFER_BIT)
 
             self.color_palette.render()
-            self.canvas.render(self.w,self.h)
+            self.canvas.render(self.h)
             self.button_menu.render()
 
             glfw.swap_buffers(self.window)
