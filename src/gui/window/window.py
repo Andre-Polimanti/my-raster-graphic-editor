@@ -27,7 +27,6 @@ class MainWindow:
             return
         
         screen = glfw.get_primary_monitor()
-        
         self.window = glfw.create_window(self.w, self.h, self.title, screen, None)
 
         if not(self.window):
@@ -61,8 +60,9 @@ class MainWindow:
             glClear(GL_COLOR_BUFFER_BIT)
 
             self.color_palette.render()
-            self.canvas.render(self.h)
+            self.canvas.render()
             self.button_menu.render()
+            # We render color_palette and button_menu everytime, a problem that will not be solved in this project
 
             glfw.swap_buffers(self.window)
         glfw.terminate()

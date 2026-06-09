@@ -12,12 +12,11 @@ class Canvas:
         self.frontbuffer = FrontBuffer(self.w,self.h, (255,255,255,255))
         self.backbuffer = BackBuffer(self.frontbuffer)
 
-    def render(self, h:int):
+    def render(self):
         x_offset = self.my_x_offset
-        y_offset = (h - self.h) // 2
         # On the left, we have the color palette, so we have to put the canvas to the right using an x_offset
 
-        glWindowPos2i(x_offset,y_offset)
+        glWindowPos2i(x_offset,0)
         glDrawPixels(
             self.frontbuffer.w,
             self.frontbuffer.h,
@@ -31,7 +30,7 @@ class Canvas:
             glEnable(GL_BLEND)
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
             
-            glWindowPos2i(x_offset, y_offset)
+            glWindowPos2i(x_offset,0)
             glDrawPixels(
                 self.backbuffer.w,
                 self.backbuffer.h,
