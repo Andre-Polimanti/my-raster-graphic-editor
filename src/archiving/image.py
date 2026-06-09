@@ -5,7 +5,7 @@ from gui.components.canvas import Canvas
 
 def export_canvas(canvas:Canvas, filename="src/archiving/my_drawing.png"):
     pixels = glReadPixels(
-        canvas.my_x_offset,
+        canvas.x_offset,
         0,
         canvas.w,
         canvas.h,

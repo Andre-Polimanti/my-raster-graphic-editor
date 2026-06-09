@@ -4,8 +4,8 @@ from core.front_buffer import FrontBuffer
 from core.back_buffer import BackBuffer
 
 class Canvas:
-    def __init__(self, width:int,height:int, my_x_offset:int):
-        self.my_x_offset = my_x_offset
+    def __init__(self, width:int,height:int, x_offset:int):
+        self.x_offset = x_offset
         self.w = width
         self.h = height
 
@@ -13,10 +13,8 @@ class Canvas:
         self.backbuffer = BackBuffer(self.frontbuffer)
 
     def render(self):
-        x_offset = self.my_x_offset
-        # On the left, we have the color palette, so we have to put the canvas to the right using an x_offset
+        glWindowPos2i(self.x_offset,0) # On the left, we have the color palette, so we have to put the canvas to the right using an x_offset
 
-        glWindowPos2i(x_offset,0)
         glDrawPixels(
             self.frontbuffer.w,
             self.frontbuffer.h,
@@ -30,7 +28,7 @@ class Canvas:
             glEnable(GL_BLEND)
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
             
-            glWindowPos2i(x_offset,0)
+            glWindowPos2i(self.x_offset,0)
             glDrawPixels(
                 self.backbuffer.w,
                 self.backbuffer.h,

@@ -51,8 +51,8 @@ class ColorPalette:
             
         return None
 
-    def render(self):
-        glWindowPos2i(0, 0)
+    def render(self, x_offset):
+        glWindowPos2i(x_offset, 0)
         glDrawPixels(
             self.w,
             self.h,

@@ -12,15 +12,15 @@ class MainWindow:
         self.title = 'MiniPaint'
 
         self.palette_section = 180
-        self.draw_section = 1600
-        self.button_section = 140
+        self.canvas_section = 1600
+        self.menu_section = 140
 
-        self.w = self.palette_section + self.draw_section + self.button_section
+        self.w = self.palette_section + self.canvas_section + self.menu_section
         self.h = 1080
 
         self.color_palette = ColorPalette(self.palette_section, self.h, self.palette_section//5*3)
-        self.canvas = Canvas(self.draw_section, self.h, self.palette_section)
-        self.button_menu = ButtonList(self.button_section, self.h, self.palette_section+self.draw_section)
+        self.canvas = Canvas(self.canvas_section, self.h, self.palette_section)
+        self.button_menu = ButtonList(self.menu_section, self.h)
 
         if not(glfw.init()):
             print("Failed to start GLFW")
@@ -59,9 +59,9 @@ class MainWindow:
             glViewport(0,0, self.w, self.h)
             glClear(GL_COLOR_BUFFER_BIT)
 
-            self.color_palette.render()
+            self.color_palette.render(x_offset=0)
             self.canvas.render()
-            self.button_menu.render()
+            self.button_menu.render(x_offset= self.palette_section + self.canvas_section)
             # We render color_palette and button_menu everytime, a problem that will not be solved in this project
 
             glfw.swap_buffers(self.window)

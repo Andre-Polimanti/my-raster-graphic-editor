@@ -22,8 +22,8 @@ class MouseEvents:
         self.is_drawing = False
 
         self.bound_palette = self.renderer.palette_section
-        self.bound_canvas = self.renderer.palette_section + self.renderer.draw_section
-        self.bound_buttons = self.bound_canvas + self.renderer.button_section
+        self.bound_canvas = self.renderer.palette_section + self.renderer.canvas_section
+        self.bound_menu = self.bound_canvas + self.renderer.menu_section
 
     def stop_drawing(self):
         self.is_drawing = False
@@ -38,7 +38,7 @@ class MouseEvents:
         x,y =  glfw.get_cursor_pos(window)
         y = self.normalize_vertical_axis(int(y))
 
-        if x < self.bound_buttons and action == glfw.PRESS:
+        if x < self.bound_menu and action == glfw.PRESS:
             local_x = int(x - self.bound_canvas) 
             
             for btn in self.button_menu.buttons:
