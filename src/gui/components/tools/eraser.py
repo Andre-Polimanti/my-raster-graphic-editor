@@ -6,4 +6,4 @@ class Eraser(Pencil):
         super().__init__(canvas)
         self.color = (self.canvas.frontbuffer.bg_color)
         
-    def set_color(self, selected_color:tuple): pass
+    def set_color(self, _): pass

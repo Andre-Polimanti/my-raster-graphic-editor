@@ -9,6 +9,7 @@ class Bucket(Tool):
 
     def on_press(self, x, y):
         flood_fill(self.canvas.frontbuffer, x,y, self.color)
+        self.canvas.is_ahead_of_display = True
 
     def on_release(self):
         pass
