@@ -1,7 +1,7 @@
 from ..base.tool import Tool
 from ...canvas import Canvas
 
-from lib.others.shapes.circle.from_center import draw_circle
+from lib.others.shapes.circle.centered import draw_circle
 from lib.others.fill.uniform import flood_fill
 
 class Circle(Tool):

@@ -1,4 +1,4 @@
-from lib.others.shapes.circle.from_center import draw_circle
+from lib.others.shapes.circle.centered import draw_circle
 from lib.others.shapes.rectangle.bresenham import draw_rectangle
 
 from lib.others.shapes.sub_set import draw_x
